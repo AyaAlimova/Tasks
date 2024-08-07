@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+
+const csv = "ID, Name, Occupation, Age\n \
+   42, Bruce, Knight, 41\n \
+   57, Bob, Fry Cook, 19 \n 63,\
+   Blaine, Quiz Master, 58 \n \
+   98, Bill, Doctor’s Assistant, 26";
+
+   let rows = csv.split('\n');
+   let numColumns = rows[0].split(',').length;
+   let dataArray = [];
+
+   for (let i = 0; i < rows.length; i++) {
+      let num_columns = rows[i].split(',');
+      dataArray.push(num_columns);
+   }
+   let data = dataArray;
+   console.log(data);
+
+
+   function transformingData(data){
+      let rows = csv.trim().split('\n');
+      let letterLowerCase = rows[0].toLowerCase().split(',');
+      let resultArray = [];
+   for (let i = 1; i < rows.length; i++) {
+      let num_columns = rows[i].split(',');
+      let object = {};
+      for (let j = 0; j < num_columns.length; j++) {
+         object[letterLowerCase[j]] = num_columns[j];
+      }
+      resultArray.push(object);
+   }
+   console.log(resultArray);
+
+   }
+
+   let objectData = [{ id: "42", name: "Bruce", occupation: "Knight", age: "41" },
+                     { id: "57", name: "Bob", occupation: "Fry Cook", age: "19" }, 
+                     { id: "63", name: "Blaine", occupation: "Quiz Master", age: "58" }, 
+                     { id: "98", name: "Bill", occupation: "Doctor’s Assistant", age: "26" }]
+
+   function sortingManipulating(data){
+      let removeLast = objectData.pop();
+      objectData.splice(1,0,{ id: "48", name: "Barry", occupation: "Runner", age: "25"})
+
+      objectData.push({ id: "7", name: "Bilbo", occupation: "None", age: "111" })
+      console.log(objectData)
+   }
+   transformingData(csv);
+   sortingManipulating(objectData);
+
+
+
+  </script>
+</body>
+</html>
